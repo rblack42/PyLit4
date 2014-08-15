@@ -13,7 +13,7 @@ setup(
     author_email='rblack@austincc.edu',
     description='Literate programming with reStructuredText',
     long_description=read('README.rst'),
-    packages='['pylit4'],
+    packages=['pylit4'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
