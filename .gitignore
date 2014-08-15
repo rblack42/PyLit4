@@ -1,0 +1,12 @@
+# COmpiled Python files
+*.pyc
+
+# vim
+*.swp
+
+# Mac
+.DS_Store
+
+# virtualenv
+_venv
+
