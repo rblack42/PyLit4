@@ -1,10 +1,10 @@
 import unittest
-import pylit
+import pylit4
  
 class Test_app(unittest.TestCase):
 
     def setUp(self):
-        self.app = pylit.app.test_client()
+        self.app = pylit4.app.test_client()
  
     def test_entry(self):
         resp = self.app.get('/')
