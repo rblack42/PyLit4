@@ -20,3 +20,10 @@ of this page when viewed on Github_).
 PyLit4_ is also a general purpose tool I use to host lecture notes for classes
 I teach at |ACC|. A running version of the application is at
 http://www.pylit.org.
+
+General Program Structure
+*************************
+
+This program is structured following this guide:
+
+    * `Matt Wright: How I Structure My Flask Applications <http://mattupstate.com/python/2013/06/26/how-i-structure-my-flask-applications.html>`_
