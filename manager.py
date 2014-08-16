@@ -9,7 +9,7 @@
 
 from flask.ext.script import Manager
 
-from pylit.api import create_app
+from pylit.app import create_app
 
 manager = Manager(create_app())
 

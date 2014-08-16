@@ -1,5 +1,5 @@
 import unittest
-from pylit.api import create_app
+from pylit.app import create_app
  
 class Test_app(unittest.TestCase):
 
@@ -9,7 +9,7 @@ class Test_app(unittest.TestCase):
  
     def test_entry(self):
         resp = self.app.get('/')
-        self.assertTrue('Hello' in resp.get_data(as_text=True))
+        self.assertTrue('ACC Website' in resp.get_data(as_text=True))
 
     def test_site_map(self):
         resp = self.app.get('/sitemap')
