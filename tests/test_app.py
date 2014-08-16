@@ -15,5 +15,16 @@ class Test_app(unittest.TestCase):
         resp = self.app.get('/sitemap')
         self.assertTrue('Site Map' in resp.get_data(as_text=True))
 
+    def test_logging_file(self):
+        resp = self.app.get('/')
+        try:
+            fout = open('debug','w')
+            log_filename = '/Users/rblack/_projects/PyLit4/logs/pylit.log'
+            logfile = open(log_filename)
+            isopen = True
+        except:
+            isopen = False
+        self.assertTrue(isopen)
+
 if __name__ == '__main__':
     unittest.main()
