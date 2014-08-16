@@ -1,10 +1,11 @@
 import unittest
-import pylit4
+from pylit.api import create_app
  
 class Test_app(unittest.TestCase):
 
     def setUp(self):
-        self.app = pylit4.app.test_client()
+        app = create_app()
+        self.app = app.test_client()
  
     def test_entry(self):
         resp = self.app.get('/')
@@ -12,7 +13,7 @@ class Test_app(unittest.TestCase):
 
     def test_site_map(self):
         resp = self.app.get('/sitemap')
-        self.assertTrue('site_map' in resp.get_data(as_text=True))
+        self.assertTrue('Site Map' in resp.get_data(as_text=True))
 
 if __name__ == '__main__':
     unittest.main()

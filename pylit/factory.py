@@ -18,7 +18,12 @@ def create_app(package_name):
 
     @app.route('/sitemap')
     def site_map():
-        links = app.url_map
-        return str(links)
+        links = []
+        reply = '<html><body>Site Map<br>========<br>'
+        for rule in app.url_map.iter_rules():
+            endpoint = rule.endpoint
+            reply += '%s -> %s<br>' % (str(rule), endpoint)
+        reply += '<br></body></html>'
+        return reply
 
     return app
