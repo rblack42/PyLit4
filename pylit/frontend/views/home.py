@@ -1,9 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 home_blueprint = Blueprint('home', 'pylit')
 
-HOME_PAGE_TPL = '<html><body><h1>ACC Website</h1><p><a href="/sitemap">Site Map</a></p></body</html>'
-
 @home_blueprint.route('/')
 def home():
-    return HOME_PAGE_TPL
+    return render_template('home.jinja', instructor = 'Roie Black')

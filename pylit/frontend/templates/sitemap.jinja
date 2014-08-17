@@ -1,0 +1,11 @@
+{% extends "base.jinja" %}
+{% block content %}
+<div class="container">
+    <h1>Site Map</h1>
+    <ul>
+    {% for url, endpoint in links %}
+    <li><a href="{{ url }}">{{ url }} -> {{ endpoint }}</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

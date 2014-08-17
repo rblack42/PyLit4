@@ -1,7 +1,17 @@
-import os
+# -*- coding: utf-8 -*-
+"""
+    pylit.app
+    =========
 
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
-LOG_DIR = os.path.abspath(os.path.join(BASEDIR, '../logs'))
+    Main PyLit application module
+"""
+
+import os
+import config
+
+TPL_PATH = os.path.abspath(os.path.join(config.BASE_DIR, 'pylit/frontend/templates'))
+STATIC_PATH = os.path.abspath(os.path.join(config.BASE_DIR, 'pylit/frontend/static'))
+LOG_DIR = os.path.abspath(os.path.join(config.BASE_DIR,'logs'))
 
 from flask import Flask, request
 import pylit.frontend.views
@@ -10,6 +20,11 @@ class PyLit(Flask):
 
     def __init__(self, name='pylit', config_file=None, *args, **kw):
         super(PyLit, self).__init__(name, *args, **kw)
+
+        # add configuration data
+        self.config.from_pyfile(config.DEFAULT_CONF_PATH)
+        if 'PYLIT_CONFIG' in os.environ:
+                self.config.from_pyfile(os.environ['PYLIT_CONFIG'])
 
     def add_logging_handlers(self):
         import logging
@@ -20,7 +35,9 @@ class PyLit(Flask):
         self.logger.setLevel(logging.INFO)
 
         # Add log file handler (if configured)
-        path = self.config.get('LOGGING_FILE')
+        logfile = self.config.get('LOG_FILE')
+        path = os.path.abspath(os.path.join(LOG_DIR,logfile))
+        print path
         if path:
             file_handler = RotatingFileHandler(path, 'a', 10000, 4)
             file_handler.setLevel(logging.INFO)
@@ -35,10 +52,11 @@ class PyLit(Flask):
 def create_app(*args, **kw):
     """Development Application Factory"""
     app = PyLit(
+            template_folder = TPL_PATH,
+            static_folder = STATIC_PATH,
             *args, **kw)
     pylit.frontend.views.register(app)
     app.config.update(dict(DEBUG=True))
-    app.config.update(dict(LOGGING_FILE='%s/%s' % (LOG_DIR, 'pylit.log')))
     
     # add logging to app
     try:

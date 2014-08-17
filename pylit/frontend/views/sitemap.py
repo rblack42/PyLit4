@@ -15,4 +15,4 @@ def site_map():
                 links.append((url, rule.endpoint))
         except:
             pass
-    return SITE_MAP_TPL % str(links)
+    return render_template('sitemap.jinja', links=links)
