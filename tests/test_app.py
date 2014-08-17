@@ -21,9 +21,11 @@ class Test_app(unittest.TestCase):
 
     def test_logging_file(self):
         resp = self.app.get('/')
-        self.app.logger.info("Test run")
         try:
-            fout = open('debug','w')
+            try:
+                os.makedirs(LOG_DIR)
+            except:
+                pass
             log_filename = os.path.join(LOG_DIR, 'pylit.log')
             logfile = open(log_filename)
             isopen = True
