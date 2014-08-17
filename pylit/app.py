@@ -39,8 +39,14 @@ def create_app(*args, **kw):
     pylit.frontend.views.register(app)
     app.config.update(dict(DEBUG=True))
     app.config.update(dict(LOGGING_FILE='%s/%s' % (LOG_DIR, 'pylit.log')))
-    app.add_logging_handlers()
+    
+    # add logging to app
+    try:
+        os.makedirs(LOG_DIR)
+    except:
+        pass
 
+    app.add_logging_handlers()
     app.logger.info("App created")
 
     return app
