@@ -8,8 +8,10 @@
 
 from .home import home_blueprint
 from .sitemap import sitemap_blueprint
+from .contents import docs_blueprint
 
 def register(app):
 
-    app.register_blueprint(home_blueprint, prefix='home')
-    app.register_blueprint(sitemap_blueprint, prefix='sitemap')
+    app.register_blueprint(home_blueprint)
+    app.register_blueprint(sitemap_blueprint)
+    app.register_blueprint(docs_blueprint)

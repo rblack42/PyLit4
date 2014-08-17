@@ -1,0 +1,12 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<h1>Table of Contents</h1>
+<p>{{ docdir }}<p>
+<ul>
+{% for doc  in docs %}
+<li><a href="/docs/{{ doc }}">{{ doc }}</a></li>
+{% endfor %}
+</ul>
+<p>{{ files }}</p>
+{% endblock %}

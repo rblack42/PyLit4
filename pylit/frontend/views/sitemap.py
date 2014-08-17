@@ -2,8 +2,6 @@ from flask import Blueprint, render_template, current_app, url_for
 
 sitemap_blueprint = Blueprint('sitemap', 'pylit')
 
-SITE_MAP_TPL = '<html><body><h1>Site Map</h1><p>%s</p></body></html>'
-
 @sitemap_blueprint.route('/sitemap')
 def site_map():
     links=[]
