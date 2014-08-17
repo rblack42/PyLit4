@@ -10,3 +10,5 @@
 # virtualenv
 _venv
 
+# logs
+logs/*

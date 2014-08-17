@@ -1,6 +1,10 @@
+import os
 import unittest
 from pylit.app import create_app
- 
+
+DIR_NAME = os.path.abspath(os.path.dirname(__file__))
+LOG_DIR = os.path.abspath(os.path.join(LOG_DIR,'../logs'))
+
 class Test_app(unittest.TestCase):
 
     def setUp(self):
@@ -19,7 +23,7 @@ class Test_app(unittest.TestCase):
         resp = self.app.get('/')
         try:
             fout = open('debug','w')
-            log_filename = '/Users/rblack/_projects/PyLit4/logs/pylit.log'
+            log_filename = os.path.join(LOG_DIR, 'pylit.log'
             logfile = open(log_filename)
             isopen = True
         except:
